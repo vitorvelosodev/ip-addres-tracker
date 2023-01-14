@@ -24,13 +24,11 @@ document.querySelector(".leaflet-top").style.visibility = 'hidden';
 
 async function fetchIPLocation(ip) {
   try {
-    if(ip.length <= 1) {
-      throw new Error('You should type a valid IP');
-    }
+    if (ip.length <= 1) throw new Error('You should type a valid IP');
     const URL = `https://geo.ipify.org/api/v2/country,city?apiKey=at_uQpMcGZY1Mh9fWfZRx5sVjxC6hvkO&ipAddress=${ip}`;
     const response = await fetch(URL);
     const data = await response.json();
-    console.log(data);
+    if (data.code) throw new Error(data.messages)
     updateMap(data.location.lat, data.location.lng);
     document.querySelector('#ip-searched').innerHTML = data.ip;
     document.querySelector('#result-address').innerHTML = `${data.location.city}, ${data.location.country} ${data.location.postalCode}`;
