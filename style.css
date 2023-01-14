@@ -15,6 +15,8 @@
 body {
   font-size: 18px;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 html, body {
@@ -26,15 +28,17 @@ html, body {
   height: 60%;
   width: 100vw;
   z-index: 0;
+  flex: 1 1 auto;
 }
 
 header {
   background-image: linear-gradient(45deg, rgba(129, 166, 201, 0.162), rgba(71, 56, 171, 0.222)), url(./pattern-bg.png);
-  background-size: 300%;
+  background-size: 2000px;
   height: 280px;
   text-align: center;
   position: relative;
   z-index: 1;
+  flex: 0 1 auto;
 }
 
 h1 {
@@ -92,11 +96,13 @@ input[type=text] {
 }
 
 #result-container {
-  margin: 20px;
+  margin: 20px auto;
   background-color: white;
-  /* padding: 10px; */
   border-radius: 15px;
   padding: 10px;
+  width: 90%;
+  max-width: 550px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 20%);
 }
 
 .section-header {
@@ -115,4 +121,39 @@ input[type=text] {
 
 .result-section {
   padding: 10px;
+}
+
+.break {
+  border: 0;
+  border-top: 1px solid rgba(170, 170, 170, 0.117);
+  width: 80%;
+  margin: 0 auto;
+  height: 1px;
+}
+
+@media screen and (min-width: 965px) {
+  #result-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 120px;
+    text-align: left;
+    max-width: 900px;
+    margin-top: 40px;
+  }
+
+  #result-container {
+    padding: 10px 30px;
+  }
+
+  .break {
+    width: 1px;
+    height: 80px !important;
+    border: 0;
+    border-left: 1px solid rgba(170, 170, 170, 0.117);
+  }
+
+  header {
+    height: 240px;
+  }
 }
