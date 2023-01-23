@@ -1,5 +1,5 @@
 // import axios from "axios";
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 
 async function getInfo(apiKey, ip) {
   const URL = `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${ip}`;
