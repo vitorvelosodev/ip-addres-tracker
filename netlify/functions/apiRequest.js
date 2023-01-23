@@ -17,3 +17,4 @@ export const handler = async (event) => {
     body: JSON.stringify(data)
   }
 }
+
