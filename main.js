@@ -1,5 +1,6 @@
 import './style.css';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 // import * as dotenv from 'dotenv'
 // dotenv.config()
 // import express from 'express'
@@ -28,9 +29,7 @@ document.querySelector(".leaflet-top").style.visibility = 'hidden';
 async function fetchIPLocation(ip) {
   try {
     if (ip.length <= 1) throw new Error('You should type a valid IP');
-    const URL = `https://geo.ipify.org/api/v2/country,city?apiKey=${import.meta.env.VITE_API_KEY}&ipAddress=${ip}`;
-    const response = await fetch(URL);
-    const data = await response.json();
+    const { data } = await axios.get(`/.netlify/functions/apiRequest?ip=${ip}`);
     if (data.code) throw new Error(data.messages)
     updateMap(data.location.lat, data.location.lng);
     document.querySelector('#ip-searched').innerHTML = data.ip;
