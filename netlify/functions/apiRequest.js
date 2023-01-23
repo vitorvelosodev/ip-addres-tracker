@@ -1,5 +1,5 @@
-import axios from "axios";
-// require('https://unpkg.com/axios/dist/axios.min.js')
+// import axios from "axios";
+const axios = require('axios').default;
 
 async function getInfo(apiKey, ip) {
   const URL = `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${ip}`;
@@ -17,4 +17,4 @@ export const handler = async (event) => {
     statusCode: 200,
     body: JSON.stringify(data)
   }
-}
+};
