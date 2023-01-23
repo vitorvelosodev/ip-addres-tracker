@@ -1,7 +1,7 @@
 // import axios from "axios";
 // import fetch from 'node-fetch';
 
-async function getInfo(apiKey, ip) {
+async function getInfo(apiKey, ip = '8.8.8.8') {
   const URL = `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${ip}`;
   const response = await fetch(URL);
   const data = response.json();
@@ -11,7 +11,7 @@ async function getInfo(apiKey, ip) {
 exports.handler = async (event, context, callback) => {
   try {
     const apiKey = process.env.VITE_API_KEY;
-    const ip = event.queryStringParameters.ip
+    // const ip = event.queryStringParameters.ip
     const data = await getInfo(apiKey, ip); 
   
     return {
