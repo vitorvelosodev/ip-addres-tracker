@@ -29,7 +29,8 @@ document.querySelector(".leaflet-top").style.visibility = 'hidden';
 async function fetchIPLocation(ip) {
   try {
     if (ip.length <= 1) throw new Error('You should type a valid IP');
-    const { data } = await axios.get(`/.netlify/functions/apiRequest?ip=${ip}`);
+    const response = await fetch(`/.netlify/functions/apiRequest?ip=${ip}`);
+    const data = await response.json();
   
     if (data.code) throw new Error(data.messages)
     updateMap(data.location.lat, data.location.lng);
