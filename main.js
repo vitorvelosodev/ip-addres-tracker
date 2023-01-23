@@ -30,6 +30,7 @@ async function fetchIPLocation(ip) {
   try {
     if (ip.length <= 1) throw new Error('You should type a valid IP');
     const { data } = await axios.get(`/.netlify/functions/apiRequest?ip=${ip}`);
+  
     if (data.code) throw new Error(data.messages)
     updateMap(data.location.lat, data.location.lng);
     document.querySelector('#ip-searched').innerHTML = data.ip;
