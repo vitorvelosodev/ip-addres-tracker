@@ -22,7 +22,7 @@ export async function handler(event, context, callback) {
   } catch(err) {
     return {
       statusCode: 422,
-      body: 'There is an error in the function'
+      body: JSON.stringify(err)
     }
   }
 }
