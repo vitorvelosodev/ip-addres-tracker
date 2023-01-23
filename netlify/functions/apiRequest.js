@@ -1,5 +1,5 @@
-// import axios from "axios";
 // import fetch from 'node-fetch';
+import axios from "axios";
 
 async function getInfo(apiKey) {
   const ip = '8.8.8.8'
